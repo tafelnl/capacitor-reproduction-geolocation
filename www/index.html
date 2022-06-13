@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Capacitor</title>
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+  </head>
+  <body>
+    <div id="requestPermissions">Click to trigger `requestPermissions`</div>
+
+    <script src="capacitor.js"></script>
+
+    <script>
+      (function () {
+        var a = document.getElementById("requestPermissions");
+        a.addEventListener("click", async () => {
+          try {
+            const result =
+              await Capacitor.Plugins.Geolocation.requestPermissions();
+            alert(JSON.stringify(result));
+          } catch (e) {
+            alert(e.toString());
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
